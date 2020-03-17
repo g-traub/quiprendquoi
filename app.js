@@ -6,7 +6,7 @@ const port = process.env.PORT
 app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
-  res.render('index')
+  res.render('index', { title: 'Qui prend quoi ?', person: 'g-traub' })
 })
 
 app.listen(port, () => console.log(`Front app listening on port ${port}!`))
