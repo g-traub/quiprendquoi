@@ -12,10 +12,15 @@ app.get('/', (req, res) => {
   res.render('index', { title: 'Qui prend quoi ?', person: 'g-traub' })
 })
 
+app.get('/party/:id', (req, res) => {
+  res.render('party', { title: 'Évenement' })
+})
+
 app.post('/party', (req, res) => {
   axios
     .post(`${process.env.API_URL}/party`, req.body)
     .then(({ data }) => console.log(data))
     .catch(err => console.error(err))
 })
+
 app.listen(port, () => console.log(`Front app listening on port ${port}!`))
