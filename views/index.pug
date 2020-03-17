@@ -1,3 +1,21 @@
 include ../partials/header.pug
+
 h1 TP : #{title} 
   small (#{person})
+
+h2 Créer un évenement
+
+form(method="post" action="/party")
+  div
+    label(for="name") Nom de l'évenement
+    input(name="name" id="name" minlength="3" placeholder="Nouvel an" required)
+  
+  div
+    label(for="author") Auteur de l'évenement
+    input(name="author" id="author" minlength="3" placeholder="Guillaume" required)
+  
+  div
+    label(for="date") Date de l'évenement
+    input(type="date" name="date" id="date" value="2020-12-31")
+  
+  button(type="submit") Créer
