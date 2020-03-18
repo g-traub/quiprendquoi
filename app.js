@@ -13,7 +13,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/party/:id', (req, res) => {
-  res.render('party', { title: 'Évenement' })
+  axios
+    .get(`${process.env.API_URL}/party/${req.params.id}`)
+    .then(({ data }) =>
+      res.render('party', {
+        party: data,
+        title: data.name
+      })
+    )
+    .catch(err => console.log(err))
 })
 
 app.post('/party', (req, res) => {
