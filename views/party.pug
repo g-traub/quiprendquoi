@@ -22,5 +22,9 @@ section
       article
         h4= item.name
         p= item.user
+        form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
+          button(type="submit") Supprimer
+
   else
     p Aucun item pour le moment... 
+  
