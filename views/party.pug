@@ -5,3 +5,12 @@ h3 Créé par #{party.author}
 
 label(for="url") Partagez l'évenement
 input(id="url" value=`${url}`)
+
+form(method="post" action=`/party/${party._id}/items`)
+  div
+    label(for="item") Ajouter un item :
+    input(id="item" name="name" required)
+  div
+    label(for="user") Votre nom :
+    input(id="user" name="user" required) 
+  button(type="submit") Ajouter
