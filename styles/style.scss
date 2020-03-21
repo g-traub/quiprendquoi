@@ -1,9 +1,18 @@
 @import './vendors/reset.scss';
 
-form {
-  border: 1px solid blue;
+html,
+body {
+  font-size: 18px;
+}
 
-  div {
-    border: 1px solid red;
-  }
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.3rem;
 }

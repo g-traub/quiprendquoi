@@ -8,6 +8,7 @@ const port = process.env.PORT
 
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static('public'))
 app.set('view engine', 'pug')
 
 app.get('/', (req, res) => {
