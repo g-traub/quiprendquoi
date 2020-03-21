@@ -14,3 +14,13 @@ form(method="post" action=`/party/${party._id}/items`)
     label(for="user") Votre nom :
     input(id="user" name="user" required) 
   button(type="submit") Ajouter
+
+section
+  if party.items.length > 0
+    h3 Items
+    each item in party.items
+      article
+        h4= item.name
+        p= item.user
+  else
+    p Aucun item pour le moment... 
