@@ -34,7 +34,7 @@ function addItem({ data }) {
 }
 
 function removeItem({ data }) {
-  const $itemEl = document.getElementById(data)
+  const $itemEl = document.getElementById(JSON.parse(data))
   // @TODO : remove this condition when changed api, necessary because the post request doesn't return the id of the created item which makes it impossible to remove it when it has been dynamicly added
   if ($itemEl) {
     $itemsSection.removeChild($itemEl)
