@@ -3,8 +3,9 @@ h1 Qui prend quoi ?
 h2= party.name
 h3 Créé par #{party.author}
 
-label(for="url") Partagez l'évenement
-input(id="url" value=`${url}`)
+.shareEvent
+  label(for="url") Partagez l'évenement
+  input(id="url" value=`${url}` data-clipboard=`${url}`)
 
 form.newParty(method="post" action=`/party/${party._id}/items`)
   .newParty__fields
