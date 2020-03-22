@@ -5,7 +5,7 @@ h3 Créé par #{party.author}
 
 .shareEvent
   label(for="url") Partagez l'évenement
-  input(id="url" value=`${url}` data-clipboard=`${url}`)
+  input(id="url" value=`${url}` data-clipboard=`${url}` data-share-url=`${url}` data-share-title=`${party.name}` data-share-text=`Vous êtes invité à rejoindre l'événement ${party.name}`)
 
 form.newParty(method="post" action=`/party/${party._id}/items`)
   .newParty__fields
