@@ -1,0 +1,30 @@
+.newParty__fields {
+  margin-bottom: 1em;
+  display: inline-block;
+
+  @include medium {
+    display: grid;
+    grid-template-columns: 175px 1fr;
+    grid-gap: 5px;
+    max-width: 500px;
+  }
+
+  label {
+    display: block;
+
+    @include medium {
+      place-self: center end;
+    }
+  }
+
+  button {
+    display: block;
+    margin: 5px 0 5px auto;
+
+    @include medium {
+      place-self: center end;
+      grid-column: 2 / 2;
+      margin: 0;
+    }
+  }
+}
