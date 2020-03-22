@@ -48,7 +48,13 @@ app.get('/party/:id', (req, res) => {
 app.post('/party/:id/items', (req, res) => {
   axios
     .post(`${process.env.API_URL}/party/${req.params.id}/items`, req.body)
-    .then(() => res.redirect(`/party/${req.params.id}`))
+    .then(() => {
+      connections.forEach(connection =>
+        connection.sseSend('addedItem', req.body)
+      )
+
+      return res.redirect(`/party/${req.params.id}`)
+    })
     .catch(err => res.send(err))
 })
 
@@ -57,7 +63,13 @@ app.delete('/party/:partyId/items/:itemId', (req, res) => {
     .delete(
       `${process.env.API_URL}/party/${req.params.partyId}/items/${req.params.itemId}`
     )
-    .then(() => res.redirect(`/party/${req.params.partyId}`))
+    .then(() => {
+      connections.forEach(connection =>
+        connection.sseSend('removedItem', req.params.itemId)
+      )
+
+      return res.redirect(`/party/${req.params.partyId}`)
+    })
     .catch(err => res.send(err))
 })
 

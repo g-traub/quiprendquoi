@@ -15,16 +15,12 @@ form.newParty(method="post" action=`/party/${party._id}/items`)
     input(id="user" name="user" required) 
     button(type="submit") Ajouter
 
-section
-  if party.items.length > 0
+section#items
     h3 Items
     each item in party.items
-      article
+    article(id=`${item._id}`)
         h4= item.name
         p= item.user
         form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
           button(type="submit") Supprimer
 
-  else
-    p Aucun item pour le moment... 
-  

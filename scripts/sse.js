@@ -17,9 +17,22 @@ if (Boolean(window.EventSource)) {
     }
   })
 
-  source.addEventListener('addedItem', e => {
-    console.log(`item added : ${e.data}`)
-  })
+  source.addEventListener('addedItem', addItem)
+  source.addEventListener('removedItem', removeItem)
 } else {
   console.warn('Votre navigateur ne supporte pas "SSE"')
+}
+
+const $itemsSection = document.getElementById('items')
+
+function addItem({ data }) {
+  const item = JSON.parse(data)
+  const $itemEl = document.createElement('article')
+  $itemEl.innerHTML = `<h4>${item.name}</h4><p>${item.user}</p>`
+  $itemsSection.append($itemEl)
+}
+
+function removeItem({ data }) {
+  const $itemEl = document.getElementById(JSON.parse(data))
+  $itemsSection.removeChild($itemEl)
 }
