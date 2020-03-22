@@ -8,7 +8,7 @@ if (navigator.clipboard) {
     )
   })
 } else {
-  console.warn('Pas de support pour clipboard API')
+  console.warn('Votre navigateur ne supporte pas "clipboard API"')
 }
 
 function copyToClipboard($clipboardEl, $button) {

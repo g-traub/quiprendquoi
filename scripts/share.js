@@ -6,7 +6,7 @@ if (navigator.share) {
     $button.addEventListener('click', () => share($shareEl, $button))
   })
 } else {
-  console.warn('Pas de support pour share API')
+  console.warn('Votre navigateur ne supporte pas "share API"')
 }
 
 function share($shareEl) {

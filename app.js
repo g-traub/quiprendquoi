@@ -2,17 +2,27 @@ const dotenv = require('dotenv').config()
 const bodyParser = require('body-parser')
 const axios = require('axios')
 const methodOverride = require('method-override')
+const sse = require('./middlewares/sse')
 const express = require('express')
 const app = express()
 const port = process.env.PORT
 
+app.set('view engine', 'pug')
+
+const connections = []
+
 app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
-app.set('view engine', 'pug')
+app.use(sse)
 
 app.get('/', (req, res) => {
   res.render('index', { title: 'Qui prend quoi ?', person: 'g-traub' })
+})
+
+app.get('/stream', (req, res) => {
+  res.sseSetup()
+  connections.push(res)
 })
 
 app.post('/party', (req, res) => {
