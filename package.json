@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run watchify\" \"npm run sass\" \"nodemon app.js\"",
     "sass": "node-sass styles/style.scss public/style.css -w --output-style compressed",
-    "watchify": "watchify scripts/*.js -o public/script.js"
+    "watchify": "watchify scripts/*.js -o public/script.js  -t [ babelify --presets [ @babel/preset-env babel-preset-minify ] ]"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,10 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "babel-preset-minify": "^0.5.1",
+    "babelify": "^10.0.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
