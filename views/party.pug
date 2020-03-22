@@ -1,5 +1,4 @@
 include ../partials/header.pug
-h1 Qui prend quoi ?
 h2= party.name
 h3 Créé par #{party.author}
 
@@ -16,11 +15,11 @@ form.newParty(method="post" action=`/party/${party._id}/items`)
     button(type="submit") Ajouter
 
 section#items
-    h3 Items
-    each item in party.items
+  h3 Items
+  each item in party.items
     article(id=`${item._id}`)
-        h4= item.name
-        p= item.user
-        form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
-          button(type="submit") Supprimer
-
+      h4= item.name
+      p= item.user
+      form(method="post" action=`/party/${party._id}/items/${item._id}?_method=DELETE`)
+        button(type="submit") Supprimer
+  
